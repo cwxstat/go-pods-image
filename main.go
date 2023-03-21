@@ -68,11 +68,11 @@ func main() {
 	}
 
 	podImageMap := make(map[string]string)
-	// Iterate over the pods and print their associated events and logs.
+	// Iterate over the pods
 	for _, pod := range pods.Items {
 		fmt.Printf("%s: Pod %s: status: %v,\n", pod.Namespace, pod.Name, pod.Status.Phase)
 		for _, container := range pod.Spec.Containers {
-			key := fmt.Sprintf("%s\t%s", pod.Name, container.Image)
+			key := fmt.Sprintf("%s, %s, %s", pod.Namespace, pod.Name, container.Image)
 			podImageMap[key] = ""
 		}
 
